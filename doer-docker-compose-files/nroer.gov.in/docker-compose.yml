@@ -1,0 +1,42 @@
+# nroer with postgres+mongodb+rcs+fs-media
+#
+# Access via "http://localhost:8010" (or "http://$(docker-machine ip):9001" if using docker-machine)
+#
+
+version: '2'
+
+services:
+
+  # Create gstudio container
+  nroer:
+    image: school-server-master:v1-20160626-080144
+    expose: ["80"]   
+    container_name: nroer.doer.metastudio
+    restart: always
+    environment:
+      - TERM=xterm
+      - VIRTUAL_HOST=nroer.doer.metastudio
+#      - VIRTUAL_PROTO=https
+    hostname: 'nroer.doer.metastudio'
+#    domainname: 'nroer.gov.in' # Change to the hostname you will use
+    ports:
+      - "8010:80"             #http
+      - "9443:443"           #https
+      - "9022:22"           #ssh
+      - "9025:25"           #smtp
+      - "9143:143"          #g-imap
+      - "9587:587"          #g-smtp
+      - "9432:5432"         #postgres
+      - "9001:8000"         #dev
+      - "9017:27017"        #mongodb
+      
+    volumes:
+      # requires proper authorizations, see rights.sh (incase of 403-forbidden error on web browser, please check /data/media permissions)
+      - /data/nroer/data:/data
+      - /data/nroer/backups:/backups 
+      - /data/nroer/setup-software:/softwares 
+
+networks:
+  default:
+    external:
+      name: doer-bridge-network

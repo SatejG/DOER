@@ -1,0 +1,32 @@
+# Portianer container to manage the docker resources from GUI
+#
+# Access via "http://localhost:8008" 
+#
+
+version: '2'
+
+services:
+
+  # Create portainer container
+  manage-docker:
+    image: portainer/portainer:latest
+    expose: ["9000"]
+    container_name: portainer.doer.metastudio
+    restart: always
+    environment:
+      - TERM=xterm
+      - VIRTUAL_HOST=portainer.doer.metastudio
+    hostname: 'portainer.doer.metastudio'
+#    domainname: 'portainer.gnowledge.org' # Change to the hostname you will use
+    ports:
+      - "8008:9000"         #default
+    
+    volumes:
+      # map the docker portainers internal path to the host machines' docker run path 
+      - /opt/portainer-data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  default:
+    external:
+      name: doer-bridge-network    

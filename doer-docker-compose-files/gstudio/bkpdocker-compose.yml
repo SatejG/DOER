@@ -1,0 +1,42 @@
+# gstudio with postgres+mongodb+rcs+fs-media
+#
+# Access via "http://localhost:8009" (or "http://$(docker-machine ip):8000" if using docker-machine)
+#
+
+version: '2'
+
+services:
+
+  # Create gstudio container
+  gstudio-clix:
+    image: registry.tiss.edu/school-server-dlkit:29-df10fd6
+    expose: ["80"]
+    container_name: gstudio-clix
+    restart: always
+    environment:
+      - TERM=xterm
+      - VIRTUAL_HOST=gstudio.doer.metastudio,doer.metastudio
+#      - VIRTUAL_PROTO=https
+    hostname: 'gstudio.doer.metastudio'
+#    domainname: 'gstudio.org' # Change to the hostname you will use
+    ports:
+      - "8009:80"             #http
+      - "8443:443"           #https
+      - "8022:22"           #ssh
+      - "8025:25"           #smtp
+      - "8143:143"          #g-imap
+      - "8587:587"          #g-smtp
+      - "8432:5432"         #postgres
+      - "8000:8000"         #dev
+      - "8017:27017"        #mongodb
+      
+    volumes:
+      # requires proper authorizations, see rights.sh (incase of 403-forbidden error on web browser, please check /data/media permissions)
+      - /data/gstudio-clix/data:/data
+      - /data/gstudio-clix/backups:/backups 
+      - /data/gstudio-clix/setup-software:/softwares 
+
+networks:
+  default:
+    external:
+      name: doer-bridge-network

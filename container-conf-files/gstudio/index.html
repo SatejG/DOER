@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1   {color: blue;}
+p    {color: red;}
+a    {float: left;position:absolute;display:block; cursor:pointer; text-decoration: none; text-align:left; vertical-align:top;padding:0px;}
+.div-css {
+    background-color: rgba(113, 130, 29, 0.25);
+    box-sizing: content-box;
+    display: inline-block;
+    font-family: arial, sans-serif, icon;
+    font-size: 18px;
+    overflow: auto;
+    position: relative;
+    padding: 20px 26px;
+    width: 210px;
+    background-size: 100% 100%;
+    height: 112px;
+    border-radius: 5px;
+    vertical-align: middle;
+    margin: 10px 10px;
+    text-align: center;
+    text-color: red;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 9px rgba(0,0,0,0.4);
+   
+}
+.div-css:hover{
+  opacity:0.8;
+}
+
+.div-name {
+   font-weight: 100;
+    color: rgba(62, 62, 62, 0.75);
+    font-size: 23.1px;
+    letter-spacing: 0.7px;
+    text-shadow: 0px 0px 0.2px rgba(62, 62, 62, 0.75);
+}
+.div-name:hover{
+  opacity:0.7;
+}
+    
+h2{
+      margin: 0px;
+    padding-top: 7px;
+    -webkit-margin-before: -0.3em;
+    -webkit-margin-after: 0.3em;
+    font-size: 1.5rem;
+    color: white;
+}
+
+h4{
+      display: grid;
+    -webkit-margin-before: -0.3em;
+    -webkit-margin-after: -3.3;
+    padding-bottom: 9px;
+    padding-top: 5px;
+    text-align: center;
+    font-size: 1.2em;
+    color: whitesmoke;
+}
+
+.dialog-background{
+    background: none repeat scroll 0 0 #fff;
+    height: 80%;
+    left: 0;
+    margin: 0;
+    padding: 10;
+    position: absolute;
+    top: 20%;
+    width: 100%;
+    z-index: 100;
+    vertical-align: middle;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.dialog-title{
+    /*background: none repeat scroll 0 0 rgba(140, 0, 250, 0.5);*/
+    font-size: 1.1em;
+    /*width:auto;*/
+    background-color:#2e3f51; 
+   /* text-align:left;*/
+   /* display:inline-block;*/
+    color:#878787;
+    position:relative;
+    margin-left:4px;
+
+
+    /*background-color: #015174;
+    color: #fff;*/
+    display: grid;
+    -webkit-box-align: center;
+    align-items: center;
+    /*height: 20%;*/
+    left: 0;
+    margin: 0;
+    /*padding: 10;*/
+    position: relative;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    /*vertical-align: middle;*/
+    /*font-size:30px;*/
+    text-align: center;
+}
+
+
+
+</style>
+
+<script type="text/javascript">
+function setHref(url) {
+switch(url)
+ {
+ case "policequad-anch":
+          document.getElementById('policequad-anch').href = window.location.protocol + "//" + window.location.hostname + ":8443/policequad/";
+          break;
+ case "runkittyrun-anch":
+          document.getElementById('runkittyrun-anch').href = window.location.protocol + "//" + window.location.hostname + ":8443/runkittyrun/";
+          break;
+ case "openstorytool-anch":
+          document.getElementById('openstorytool-anch').href = window.location.protocol + "//" + window.location.hostname + ":8443/openstorytool/";
+          break;
+ case "rotation-anch":
+          document.getElementById('rotation-anch').href = window.location.protocol + "//" + window.location.hostname + ":8443/rotation/";
+          break;
+ default:
+          document.getElementById('home-anch').href = window.location.protocol + "//" + window.location.hostname + ":8443/welcome";
+
+ }
+}
+</script>
+
+
+</head>
+<body>
+<div class="row">
+    <div class="small-12 columns">
+      <div class="dialog-title ">
+        <h2>Game Tools</h2>
+        <br/>
+        <h4>Learning through games</h4>
+      </div>
+    </div>
+
+    <div class="small-12 medium-6 columns">
+      <div><br/></div>
+      <div class="dialog-background">        
+<!------------------------------------->
+      <div class="large-4 medium-6 small-12 columns">
+	<div class="div-css">
+          <a id="runkittyrun-anch" href="#" onclick="return setHref('runkittyrun-anch')"  target="_blank"><span class="div-name">Run Kitty Run</span></a>
+        </div>       
+	<div class="div-css">
+          <a id="policequad-anch" href="#" onclick="return setHref('policequad-anch')"  target="_blank"><span class="div-name">Policequad</span></a>
+        </div>
+        <div class="div-css">
+          <a id="rotation-anch" href="#" onclick="return setHref('rotation-anch')"  target="_blank"><span class="div-name">Earth Rotation</span></a>
+        </div>
+	<div class="div-css">
+          <a id="openstorytool-anch" href="#" onclick="return setHref('openstorytool-anch')"  target="_blank"><span class="div-name">Open Story Tool</span></a>
+        </div>
+      </div>
+
+<!------------------------------------------------->
+
+    </div> 
+  </div>
+</div>
+</body>
+</html>

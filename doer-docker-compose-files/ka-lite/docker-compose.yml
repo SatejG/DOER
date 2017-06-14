@@ -1,0 +1,31 @@
+# Khan Academy offline 
+#
+# Access via "http://localhost:8012" 
+#
+
+version: '2'
+
+services:
+
+  # Create portainer container
+  ka-lite:
+    image: gnowgi:kal3
+    expose: ["8008"]
+    container_name: ka-lite
+#    command: '/etc/init.d/ka-lite start'
+#    restart: always
+    environment:
+      - TERM=xterm
+      - VIRTUAL_HOST=ka-lite.doer.metastudio
+    hostname: 'ka-lite.doer.metastudio'
+#    domainname: 'ka-lite.gnowledge.org' # Change to the hostname you will use
+    ports:
+      - "8012:8008"         #default
+    volumes:
+      #- /data/ka-lite:/var/ka-lite/
+      - /data/ka-lite:/var/ka-lite/.kalite/content
+
+networks:
+  default:
+    external:
+      name: doer-bridge-network    

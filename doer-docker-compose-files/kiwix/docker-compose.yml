@@ -1,0 +1,34 @@
+# dockerized-kiwix-server
+#
+# Access via "http://localhost:8011" (or "http://$(docker-machine ip):8011" if using docker-machine)
+# Ref : https://github.com/jasiek/dockerized-kiwix-server
+# 
+#   Wanna run your own wikipedia server locally? Look no further!
+#   Download a content file from http://www.kiwix.org/wiki/Content.
+#   Rename downloaded file to wikipedia.zim.
+#   Given wikipedia.zim resides in /tmp/wiki, execute the following:
+#   Command to run instead of docker-compose 
+#       docker run -v /tmp/wiki:/kiwix-data -p 8011:8080 jasiek/kiwix-server
+
+version: '2'
+
+services:
+
+  # Create kiwix container
+  kiwix:
+    image: jasiek/kiwix-server
+    expose: ["8080"]
+    restart: always
+    container_name: kiwix.doer.metastudio
+#    hostname: 'kiwix.doer.metastudio'
+    ports:
+      - 8011:8080
+    environment:
+      - VIRTUAL_HOST=kiwix.doer.metastudio
+    volumes:
+      - /data/kiwix/volumes/data:/kiwix-data
+
+networks:
+  default:
+    external:
+      name: doer-bridge-network
